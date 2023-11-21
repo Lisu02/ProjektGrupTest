@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name="StopnieNaukowe")
 @Getter
@@ -15,4 +17,8 @@ public class StopienNaukowy {
     private Long idStopniaNaukowego;
     @Column(name = "nazwa")
     private String nazwa;
+
+    //KLUCZE OBCE
+    @OneToMany(mappedBy = "stopienNaukowy")
+    Set<Pracownik> pracownikSet;
 }

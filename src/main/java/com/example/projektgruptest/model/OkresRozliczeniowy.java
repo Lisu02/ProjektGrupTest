@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="OkresRozliczeniowy")
@@ -19,4 +20,10 @@ public class OkresRozliczeniowy {
     private Date poczatek;
     @Column(name = "koniec")
     private Date koniec;
+
+    //KLUCZE OBCE
+    @OneToMany(mappedBy = "okresRozliczeniowy")
+    Set<Wniosek> wniosekSet;
+
+
 }

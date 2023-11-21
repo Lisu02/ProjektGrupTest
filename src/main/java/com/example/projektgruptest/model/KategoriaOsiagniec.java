@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name="KategorieOsiagniec")
 @Getter
@@ -14,11 +16,14 @@ public class KategoriaOsiagniec {
     private Long idKategoriaOsiagniec;
     @Column(name = "nazwaKategorii")
     private String nazwaKategorii;
-//    @Column(name = "idRodzajDzialalnosci")
-//    private Long idRodzajDzialalnosci;
 
-//    @ManyToOne
-//    @JoinColumn(name = "idRodzajDzialalnosci")
-//    private RodzajDzialalnosci idRodzajDzialalnosci;
-//    //TODO: KLUCZ RODZAJDZIALANSOCI_IDRODZAJDZIALANSOCI Z OBRAZKA
+    //KLUCZE OBCE
+    @ManyToOne
+    @MapsId("idRodzajDzialalnosci")
+    @JoinColumn(name = "idRodzajDzialalnosci")
+    RodzajDzialalnosci rodzajDzialalnosci;
+
+    @OneToMany(mappedBy = "kategoriaOsiagniec")
+    Set<PodKategoria> podKategoriaSet;
+
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name="Pracownicy")
 @Getter
@@ -29,4 +31,39 @@ public class Pracownik {
     private Long idStanowiska;
     @Column(name = "idRoli")
     private Long idRoli;
+
+    //KLUCZE OBCE
+
+    @OneToMany(mappedBy = "pracownik")
+    Set<Osiagniecie> osiagniecieSet;
+
+    @ManyToOne
+    @MapsId("idRodzajDzialalnosci")
+    @JoinColumn(name="idRodzajDzialalnosci")
+    RodzajDzialalnosci rodzajDzialalnosci;
+
+    @ManyToOne
+    @MapsId("idWniosku")
+    @JoinColumn(name = "idWniosku")
+    Wniosek wniosek;
+
+    @ManyToOne
+    @MapsId("idOceny")
+    @JoinColumn(name = "idOceny")
+    Ocena ocena;
+
+    @ManyToOne
+    @MapsId("idRoli")
+    @JoinColumn(name = "idRoli")
+    Rola rola;
+
+    @ManyToOne
+    @MapsId("idStanowiska")
+    @JoinColumn(name = "idStanowiska")
+    PracownikStanowisko pracownikStanowisko;
+
+    @ManyToOne
+    @MapsId("idStopniaNaukowego")
+    @JoinColumn(name = "idStopniaNaukowego")
+    StopienNaukowy stopienNaukowy;
 }

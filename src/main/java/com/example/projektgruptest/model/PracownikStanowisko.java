@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name="PracownikStanowiska")
 @Getter
@@ -15,4 +17,7 @@ public class PracownikStanowisko {
     private Long idStanowiska;
     @Column(name = "nazwa")
     private String nazwa;
+
+    @OneToMany(mappedBy = "pracownikStanowisko")
+    Set<Pracownik> pracownikSet;
 }

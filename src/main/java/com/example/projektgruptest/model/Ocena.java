@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="Oceny")
@@ -27,4 +28,14 @@ public class Ocena {
     private Long idWniosku;
     @Column(name = "Wniosek_idWniosku")
     private Long  wniosekIdWniosku;
+
+    //KLUCZE OBCE
+
+    @ManyToOne
+    @MapsId("idWniosku")
+    @JoinColumn(name = "idWniosku")
+    Wniosek wniosek;
+
+    @OneToMany(mappedBy = "ocena")
+    Set<Pracownik> pracownikSet;
 }

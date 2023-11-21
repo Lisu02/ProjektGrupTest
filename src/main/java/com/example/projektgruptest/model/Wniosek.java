@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name="Wnioski")
 @Getter
@@ -19,5 +21,19 @@ public class Wniosek {
     private Long idOkresu;
 
 
-    //TODO:OkresRozliczeniowy-idOkresu
+    //KLUCZE OBCE
+    @OneToMany(mappedBy = "wniosek")
+    Set<Osiagniecie> osiagniecieSet;
+
+    @OneToMany(mappedBy = "wniosek")
+    Set<Pracownik> pracownikSet;
+
+    @ManyToOne
+    @MapsId("idOkresu")
+    @JoinColumn(name = "idOkresu")
+    OkresRozliczeniowy okresRozliczeniowy;
+
+    @OneToMany(mappedBy = "wniosek")
+    Set<Ocena> ocenaSet;
+
 }

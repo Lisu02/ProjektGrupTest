@@ -17,9 +17,6 @@ public class KryteriaOceny {
     private Boolean czyPosiadaStopienNaukowy;
     @Column(name = "czyNaStanowiskuKierowniczym")
     private Boolean czyNaStanowiskuKierowniczym;
-//    @ManyToOne //Połącznenie
-//    @JoinColumn (name = "idRodzajuDzialalnosci")
-//    private RodzajDzialalnosci rodzajDzialalnosci ;
     @Column(name = "progPozytywnejOcenyNB")
     private Integer progPozytywnejOcenyNB;
     @Column(name = "progOcenyZWyroznieniemNB")
@@ -29,12 +26,10 @@ public class KryteriaOceny {
     @Column(name = "progOcenyZWyroznieniemDO")
     private Integer progOcenyZWyroznieniemDO;
 
-//    @ManyToOne
-//    @JoinColumn(name = "")
-//    private RodzajDzialalnosci idrodzajDzialalnosci;
-
-//    @ManyToOne
-//    @JoinColumn(name = "kryteriaOceny_RodzajDzialalnosci")
-//    private RodzajDzialalnosci rodzajDzialalnosci;
+    //KLUCZE OBCE
+    @ManyToOne
+    @MapsId("idRodzajDzialalnosci")
+    @JoinColumn(name = "idRodzajDzialalnosci")
+    RodzajDzialalnosci rodzajDzialalnosci;
 
 }

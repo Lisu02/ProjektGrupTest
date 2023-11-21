@@ -29,6 +29,23 @@ public class Osiagniecie {
     private Boolean czyZatwierdzone;
     @Column(name = "idWniosku")
     private Long idWniosku;
-    //PodKategoria_idPodKategorii foreign key itp na razie nie dodaje
+
     //TODO: KLUCZE OBCE
+
+    @ManyToOne
+    @MapsId("idPodKategorii")
+    @JoinColumn(name = "idPodKategorii")
+    PodKategoria podKategoria;
+
+    @ManyToOne
+    @MapsId("idPracownika")
+    @JoinColumn(name = "idPracownika")
+    Pracownik pracownik;
+
+    @ManyToOne
+    @MapsId("idWniosku")
+    @JoinColumn(name = "idWniosku")
+    Wniosek wniosek;
+
+
 }

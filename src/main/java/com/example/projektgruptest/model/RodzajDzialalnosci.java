@@ -20,12 +20,14 @@ public class RodzajDzialalnosci {
     @Column(name = "nazwa")
     private String nazwa;
 
-
     //KLUCZE OBCE
-//    @OneToMany(mappedBy = "idrodzajDzialalnosci", orphanRemoval = true)
-//    private Set<KryteriaOceny> idkryteriaOceny = new LinkedHashSet<>();
-//    //
-//    @OneToMany(mappedBy = "idKategoriaOsiagniec", orphanRemoval = true)
-//    private Set<KategoriaOsiagniec> idKategoriaOsiagniec = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "rodzajDzialalnosci")
+    Set<KryteriaOceny> kryteriaOcenySet;
+
+    @OneToMany(mappedBy = "rodzajDzialalnosci")
+    Set<KategoriaOsiagniec> kategoriaOsiagniecSet;
+
+    @OneToMany(mappedBy = "rodzajDzialalnosci")
+    Set<Pracownik> pracownikSet;
 
 }
